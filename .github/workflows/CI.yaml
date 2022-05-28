@@ -3,7 +3,7 @@ name: PlatformIO CI
 on: [push]
 
 jobs:
-  Build-And-Upload:
+  Build:
 
     runs-on: ubuntu-latest
 
