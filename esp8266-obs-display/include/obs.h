@@ -29,7 +29,7 @@ enum class capture_state_t : uint8_t
 #define REGISTER_STATUS_MEMBER(TYPE, NAME) \
     struct { \
         TYPE value; \
-        std::string name = #NAME; \
+        const char * const name = #NAME; \
     } NAME;
 
 typedef struct

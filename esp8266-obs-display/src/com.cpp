@@ -11,11 +11,14 @@ void start(const char* host, uint16_t port)
 {
     client.begin(host, port, "/");
     client.onEvent(_onEvent);
+    client.setReconnectInterval(500);
+    Serial.printf("Connecting to %s:%d\n", host, port);
 }
 
 void stop()
 {
     client.disconnect();
+    Serial.println("Disconnected");
 }
 
 void update()
@@ -28,7 +31,7 @@ void sendMessage(const char* message)
     if (!ws_connected)
         return;
     
-    // Serial.printf("TX: %s\n", message);
+     Serial.printf("TX: %s\n", message);
     client.sendTXT(message);
 }
 
@@ -65,7 +68,7 @@ void _onEvent(WStype_t type, uint8_t *payload, size_t length)
 
 void onReceive(const char* message)
 {
-    // Serial.printf("RX: %s\n", message);
+     Serial.printf("RX: %s\n", message);
     obs::handle_response(std::string(message));
 }
 
@@ -78,6 +81,7 @@ void onConnect()
 void onDisconnect()
 {
     globals::connected_to_server = false;
+    globals::obs_running = false;
     ws_connected = false;
 }
 } // namespace ws

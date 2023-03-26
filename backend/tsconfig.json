@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "target": "esnext",
+        "module": "esnext",
+        "outDir": "dist",
+        "rootDir": "src",
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "removeComments": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ],
+    "typeAcquisition": {
+        "enable": true
+    }
+}
