@@ -94,10 +94,24 @@ void loop()
 
   if (!globals::connected_to_server)
   {
-    display_reconnect_message();
+    if (globals::reconnecting_time == 0)
+    {
+      globals::reconnecting_time = millis();
+    }
+    else if (millis() - globals::reconnecting_time < 5000)
+    {
+      display_reconnect_message();
+    }
+    else
+    {
+      lcd.clear();
+      lcd.noBacklight();
+      digitalWrite(pins::PIN_LED, LOW);
+    }
   }
   else if (globals::obs_running)
   {
+    globals::reconnecting_time = 0;
     led::handleAnimation();
     switch (obs::status.captureState.value)
     {
