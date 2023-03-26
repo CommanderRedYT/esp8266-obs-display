@@ -30,4 +30,5 @@ jobs:
     - name: Run PlatformIO
       run: |
         cd esp8266-obs-display/
+        cp .env.default .env
         pio run
