@@ -55,6 +55,8 @@ function getCaptureState(streamResponse: OBSResponseTypes['GetStreamStatus'], re
             return CaptureState.STREAMING;
         }
     } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore // types.d.ts say "ouputPaused" instead of "outputPaused"
         if (recordResponse.outputPaused) {
             return CaptureState.RECORDING_PAUSED;
         } else {
