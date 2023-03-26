@@ -290,19 +290,19 @@ obs.on('CurrentProgramSceneChanged', (event: OBSEventTypes['CurrentProgramSceneC
 });
 
 obs.on('ConnectionClosed', (e) => {
-    console.log('ConnectionClosed', e);
+    //console.log('ConnectionClosed', e);
 
     obsState.connected = false;
 });
 
 obs.on('ConnectionOpened', async () => {
-    console.log('ConnectionOpened');
+    //console.log('ConnectionOpened');
 
     obsState.connected = true;
 });
 
 obs.on('ConnectionError', (e) => {
-    console.log('AuthenticationSuccess', e);
+    //console.log('AuthenticationSuccess', e);
 });
 
 setInterval(async () => {
